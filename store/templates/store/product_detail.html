@@ -20,6 +20,6 @@
         <p><strong>Stock:</strong> {{ product.stock }} available</p>
         <p><small>Last updated: {{ product.updated_at|date:"F d, Y H:i" }}</small></p>
 
-        <button type="button" class="button add-to-cart-button">Add to Cart (Coming Soon!)</button>
+        <a href="{% url 'store:add_to_cart' product.id %}" class="button add-to-cart-button">Add to Cart</a>
     </div>
 {% endblock %}

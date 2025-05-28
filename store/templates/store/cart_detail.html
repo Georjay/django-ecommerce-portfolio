@@ -1,0 +1,66 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Your Shopping Cart - My Shop{% endblock %}
+
+{% block content %}
+<h1>Your Shopping Cart</h1>
+
+{% if messages %} {# Display Django messages, e.g., for 'added to cart' #}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if is_empty %}
+    <p>Your cart is currently empty.</p>
+    <p><a href="{% url 'store:product_list' %}" class="button">Continue Shopping</a></p>
+{% else %}
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td><a href="{% url 'store:product_detail' item.product.id %}">{{ item.product.name }}</a></td>
+                <td>
+                    {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="cart-item-image">
+                    {% else %}
+                        (No image)
+                    {% endif %}
+                </td>
+                <td>
+                    {{ item.quantity }}
+                    </td>
+                <td>${{ item.price|floatformat:2 }}</td>
+                <td>${{ item.total_item_price|floatformat:2 }}</td>
+                <td>
+                    <a href="{% url 'store:remove_from_cart' item.product.id %}" class="button button-danger">Remove</a>
+                    </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" style="text-align:right;"><strong>Grand Total:</strong></td>
+                <td colspan="2"><strong>${{ total_cart_price|floatformat:2 }}</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="cart-actions">
+        <a href="{% url 'store:product_list' %}" class="button button-secondary">Continue Shopping</a>
+        <a href="#" class="button">Proceed to Checkout (Coming Soon!)</a>
+    </div>
+{% endif %}
+{% endblock %}
