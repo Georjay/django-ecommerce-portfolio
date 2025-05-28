@@ -115,3 +115,19 @@ footer {
 .back-link:hover {
     text-decoration: underline;
 }
+
+.product-image-thumbnail {
+    max-width: 100%; /* Ensure it fits within the card */
+    height: 150px;   /* Fixed height for uniformity */
+    object-fit: cover; /* Scale while maintaining aspect ratio, cropping if necessary */
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.product-image-detail {
+    max-width: 100%;
+    height: auto; /* Let height adjust automatically */
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}

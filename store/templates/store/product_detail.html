@@ -8,7 +8,9 @@
         <h2>{{ product.name }}</h2>
 
         {% if product.image %}
-            <p><em>(Image placeholder: {{ product.image }})</em></p>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image-detail">
+        {% else %}
+            <p><em>(No image available)</em></p>
         {% endif %}
 
         <p><strong>Description:</strong></p>

@@ -13,7 +13,9 @@
                         </a>
                     </h2>
                     {% if product.image %}
-                        <p><em>(Image placeholder: {{ product.image }})</em></p>
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image-thumbnail">
+                    {% else %}
+                        <p><em>(No image available)</em></p>
                     {% endif %}
                     <p>{{ product.description|truncatewords:15 }}</p>
                     <p><strong>Price:</strong> ${{ product.price }}</p>
