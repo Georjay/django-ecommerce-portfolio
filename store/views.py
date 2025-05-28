@@ -19,7 +19,6 @@ def product_list(request):
         'products': products,
         'num_visits': num_visits,
     }
-
     return render(request, 'store/product_list.html', context)
 
 def product_detail(request, product_id):
