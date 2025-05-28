@@ -110,3 +110,41 @@ def remove_from_cart(request, product_id):
         messages.warning(request, "Item not found in your cart.") # Or handle as you see fit
 
     return redirect('store:view_cart') # Redirect back to the cart page
+
+def update_cart_item(request, product_id):
+    if request.method == 'POST':
+        cart = request.session.get('cart', {})
+        product_id_str = str(product_id) # Key in cart is string
+
+        try:
+            quantity = int(request.POST.get('quantity')) # Get quantity from POST data
+        except (ValueError, TypeError):
+            messages.error(request, "Invalid quantity entered.")
+            return redirect('store:view_cart')
+
+        if product_id_str in cart:
+            if quantity > 0:
+                # Optional: Check against stock if you have a stock system
+                product = Product.objects.get(id=product_id)
+                if quantity > product.stock:
+                    messages.error(request, f"Sorry, only {product.stock} of {product.name} available.")
+                    return redirect('store:view_cart')
+
+                cart[product_id_str]['quantity'] = quantity
+                messages.success(request, f"Quantity for item updated in your cart.")
+            elif quantity == 0:
+                # If quantity is 0, remove the item
+                del cart[product_id_str]
+                messages.success(request, f"Item removed from your cart.")
+            else:
+                # Quantity is negative, which shouldn't happen with min="0" but good to handle
+                messages.error(request, "Quantity must be a positive number or zero to remove.")
+
+            request.session['cart'] = cart # Save changes to session
+        else:
+            messages.error(request, "Item not found in cart to update.")
+    else:
+        # If not a POST request, just redirect to cart (or handle differently)
+        messages.warning(request, "Invalid request method.")
+
+    return redirect('store:view_cart')

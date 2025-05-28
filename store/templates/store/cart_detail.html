@@ -6,13 +6,7 @@
 {% block content %}
 <h1>Your Shopping Cart</h1>
 
-{% if messages %} {# Display Django messages, e.g., for 'added to cart' #}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+
 
 {% if is_empty %}
     <p>Your cart is currently empty.</p>
@@ -31,24 +25,28 @@
         </thead>
         <tbody>
             {% for item in cart_items %}
-            <tr>
-                <td><a href="{% url 'store:product_detail' item.product.id %}">{{ item.product.name }}</a></td>
-                <td>
-                    {% if item.product.image %}
-                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="cart-item-image">
-                    {% else %}
-                        (No image)
-                    {% endif %}
-                </td>
-                <td>
-                    {{ item.quantity }}
+                <tr>
+                    <td><a href="{% url 'store:product_detail' item.product.id %}">{{ item.product.name }}</a></td>
+                    <td>
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="cart-item-image">
+                        {% else %}
+                            (No image)
+                        {% endif %}
                     </td>
-                <td>${{ item.price|floatformat:2 }}</td>
-                <td>${{ item.total_item_price|floatformat:2 }}</td>
-                <td>
-                    <a href="{% url 'store:remove_from_cart' item.product.id %}" class="button button-danger">Remove</a>
+                    <td>
+                        <form method="POST" action="{% url 'store:update_cart_item' item.product.id %}" class="update-cart-form">
+                            {% csrf_token %}
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="0" class="quantity-input">
+                            <button type="submit" class="button button-small">Update</button>
+                        </form>
                     </td>
-            </tr>
+                    <td>${{ item.price|floatformat:2 }}</td>
+                    <td>${{ item.total_item_price|floatformat:2 }}</td>
+                    <td>
+                        <a href="{% url 'store:remove_from_cart' item.product.id %}" class="button button-danger">Remove</a>
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
         <tfoot>

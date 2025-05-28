@@ -192,3 +192,40 @@ ul.messages li.error {
 .button-secondary:hover {
     background-color: #5a6268;
 }
+
+/* ... your existing CSS ... */
+.update-cart-form {
+    display: flex;
+    align-items: center;
+}
+.quantity-input {
+    width: 60px; /* Adjust as needed */
+    padding: 5px;
+    margin-right: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.button-small {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+nav {
+    /* ... existing nav styles ... */
+    display: flex; /* If you want to align shop name and cart summary nicely */
+    justify-content: space-between; /* Example: Pushes shop name to left, cart to right */
+    align-items: center;
+}
+
+.nav-cart-summary a {
+    color: #fff; /* Or your nav link color */
+    text-decoration: none;
+    font-size: 0.9rem; /* Adjust as needed */
+    padding: 5px 10px;
+    border: 1px solid #fff; /* Optional: make it look like a button */
+    border-radius: 4px;
+}
+.nav-cart-summary a:hover {
+    background-color: #555; /* Optional hover effect */
+}

@@ -10,11 +10,22 @@
     <header>
         <nav>
             <a href="{% url 'store:product_list' %}"><h1>My Awesome Shop</h1></a>
-            <a href="{% url 'store:view_cart' %}" style="margin-left: 20px;">View Cart</a>
+            <div class="nav-cart-summary">
+                <a href="{% url 'store:view_cart' %}">
+                    Cart: {{ cart_item_count }} item{{ cart_item_count|pluralize }} - ${{ cart_total_price|floatformat:2 }}
+                </a>
+            </div>
         </nav>
     </header>
 
     <main>
+        {% if messages %} {# Display Django messages, e.g., for 'added to cart' #}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </main>
