@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Shop{% endblock %}</title> 
+    <link rel="stylesheet" href="{% static 'store/css/main.css' %}"> </head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'store:product_list' %}"><h1>My Awesome Shop</h1></a>
+            </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {% now "Y" %} My Awesome Shop. All rights reserved.</p>
+        </footer>
+</body>
+</html>

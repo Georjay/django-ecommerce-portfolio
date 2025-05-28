@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* Product List Styles */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.product-card h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+.product-card h2 a {
+    text-decoration: none;
+    color: #007bff;
+}
+.product-card h2 a:hover {
+    text-decoration: underline;
+}
+
+
+/* Product Detail Styles */
+.product-detail-container {
+    padding: 20px;
+}
+.product-detail-container h2 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* Button Styles */
+.button, button.button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.button:hover, button.button:hover {
+    background-color: #0056b3;
+}
+.add-to-cart-button {
+    margin-top: 20px;
+    background-color: #28a745; /* Green */
+}
+.add-to-cart-button:hover {
+    background-color: #1e7e34;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+.back-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,23 @@
+{% extends "store/base.html" %}
+
+{% block title %}{{ product.name }} - My Shop{% endblock %}
+
+{% block content %}
+    <div class="product-detail-container">
+        <a href="{% url 'store:product_list' %}" class="back-link">&laquo; Back to Products</a>
+        <h2>{{ product.name }}</h2>
+
+        {% if product.image %}
+            <p><em>(Image placeholder: {{ product.image }})</em></p>
+        {% endif %}
+
+        <p><strong>Description:</strong></p>
+        <p>{{ product.description }}</p>
+
+        <p><strong>Price:</strong> ${{ product.price }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }} available</p>
+        <p><small>Last updated: {{ product.updated_at|date:"F d, Y H:i" }}</small></p>
+
+        <button type="button" class="button add-to-cart-button">Add to Cart (Coming Soon!)</button>
+    </div>
+{% endblock %}
