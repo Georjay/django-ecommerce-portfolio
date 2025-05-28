@@ -1,0 +1,85 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+# Usually these files are written by a script, but they might be committed accidentally.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+db.sqlite3
+db.sqlite3-journal # In case of abrupt shutdown
+
+# Virtual Environment
+venv/
+env/
+.venv/
+ENV/
+# If you use virtualenvwrapper, your environments are likely outside the project.
+# But if you created one locally called 'venv' before switching.
+
+# Static files collected by collectstatic
+# It's better to generate these on the server or during deployment
+# If you have a 'static_root' in settings.py, add its name here
+# e.g., if STATIC_ROOT = BASE_DIR / 'staticfiles'
+# staticfiles/
+
+# Media files (user-uploaded content)
+# If you have a 'media_root' in settings.py, add its name here
+# e.g., if MEDIA_ROOT = BASE_DIR / 'mediafiles'
+# mediafiles/
+
+# IDE / Editor specific files
+.idea/
+.vscode/
+*.swp
+*.swo
